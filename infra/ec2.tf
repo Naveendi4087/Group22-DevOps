@@ -10,7 +10,7 @@
 #               yum install -y docker
 #               service docker start
 #               usermod -a -G docker ec2-user
-#               docker run -d -p 5000:5000 --env MONGO_URI=mongodb+srv://Thasha:thasha@cluster0.tpcr3a1.mongodb.net/Saloon?retryWrites=true&w=majority thashara/backendv1:5
+#               docker run -d -p 5000:5000 --env MONGO_URI=mongodb+srv://Thasha:thasha@cluster0.tpcr3a1.mongodb.net/Saloon?retryWrites=true&w=majority thashara/backendv2:5
 #               EOF
 
 #   tags = {
@@ -30,10 +30,10 @@ resource "aws_instance" "frontend" {
               yum install -y docker
               service docker start
               usermod -a -G docker ec2-user
-              docker pull thashara/backendv1:5
-              docker pull thashara/frontendv1:5
+              docker pull thashara/backendv2:5
+              docker pull thashara/frontendv2:5
               docker run -d --name backend -p 5000:5000 -e MONGODB_URI="mongodb+srv://Thasha:thasha@cluster0.tpcr3a1.mongodb.net/Saloon?retryWrites=true&w=majority" thashara/backendv1:5
-              docker run -d --name frontend -p 3000:3000 thashara/frontendv1:5
+              docker run -d --name frontend -p 3000:3000 thashara/frontendv2:5
               EOF
 
   tags = {
